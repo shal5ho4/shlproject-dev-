@@ -1,5 +1,5 @@
 """
-ASGI config for shlproject project.
+ASGI config for shl_project project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'shlproject.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'shl_project.settings')
 
 application = get_asgi_application()

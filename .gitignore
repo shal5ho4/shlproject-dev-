@@ -8,4 +8,4 @@ db.sqlite3-journal
 /static
 media
 env
-local_settings.py
+.env
