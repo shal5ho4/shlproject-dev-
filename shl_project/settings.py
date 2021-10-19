@@ -20,7 +20,7 @@ SECRET_KEY = env.str('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['shldepot.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'listings.apps.ListingsConfig',
     'cart.apps.CartConfig',
+    'orders.apps.OrdersConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +139,27 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # Cart session config
 
 CART_ID = 'cart'
+
+
+# Stripe API keys
+
+STRIPE_TEST_PUBLISHABLE_KEY = env.str('STRIPE_TEST_PUB')
+
+STRIPE_TEST_SECRET_KEY = env.str('STRIPE_TEST_SEC')
+
+
+# Email config
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+DEFAULT_FROM_EMAIL = 'sharuru.test@gmail.com'
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+
+EMAIL_HOST_USER = 'apikey'
+
+EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
+
+EMAIL_PORT = 587
+
+EMAIL_USE_TLS = True
