@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load listings_tags %}
 
 {% block title %}SHL.depot{% endblock %}
 
@@ -32,6 +33,8 @@
         {% endfor %}
       </ul>
     </div>
+    <hr>
+    {% search_bar %}
   </div>
   <div class="col-lg-9">
     <div class="card shadow-custom border-0 mb-4">
@@ -39,6 +42,8 @@
         <h2 class="font-weight-bold text-grey">
           {% if requested_category %}
             {{ requested_category.name }}
+          {% elif query %}
+            Search results
           {% else %}
             Our Products
           {% endif %}
@@ -70,20 +75,40 @@
                   {{ product.price }}
                 </span>
                 <div>
-                  {% if product.shu %}
-                    <i class="fas fa-fire"></i> {{ product.shu }} SHU
-                  {% elif product.abv %}
-                    <i class="fas fa-vial"></i> ABV.{{ product.abv }}
-                  {% endif %}
+                  <i class="fas fa-shopping-basket"></i>
+                  {{ product.net }}
                 </div>
               </div>
             </div>
           </div>
         </div>
+      {% empty %}
+      <div class="col-sm-12">
+        <div class="h4 text-decoration-none text-center">
+          Sorry, no results found.
+        </div>
+      </div>
       {% endfor %}
     </div>
   </div>
   <div class="col-lg-3"></div>
+  <div class="pagination">
+    <span class="step-links">
+      <i class="fas fa-caret-square-left"></i>
+      {% if products.has_previous %}
+        <a href="?page={{ products.previous_page_number }}"
+          class="text-warning">Back</a>
+      {% endif %}
+      <span class="current">
+        Page {{ products.number }} of {{ products.paginator.num_pages }}
+      </span>
+      {% if products.has_next %}
+        <a href="?page={{ products.next_page_number }}" 
+          class="text-warning">Next</a>
+      {% endif %}
+      <i class="fas fa-caret-square-right"></i>
+    </span>
+  </div>
 </div>
 <hr>
 {% endblock %}

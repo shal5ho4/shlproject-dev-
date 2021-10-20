@@ -1,4 +1,5 @@
 from django import forms
+from django.forms.widgets import TextInput
 from .models import Review
 
 
@@ -20,3 +21,12 @@ class ReviewForm(forms.ModelForm):
       }),
       'rating': forms.RadioSelect
     }
+
+
+class SearchForm(forms.Form):
+
+  query = forms.CharField(
+    widget=TextInput(attrs={
+      'class': 'form-control'
+    })
+  )

@@ -1,7 +1,11 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.postgres.search import (
+  SearchVector, SearchQuery, SearchRank
+)
 from cart.forms import CartAddProductForm
 from .models import Category, Product, Review
-from .forms import ReviewForm
+from .forms import ReviewForm, SearchForm
 
 
 def product_list(request, category_slug=None):
@@ -10,13 +14,43 @@ def product_list(request, category_slug=None):
   requested_category = None
   products = Product.objects.all()
 
+  form = SearchForm()
+  query = None
+
+  if 'query' in request.GET:
+    form = SearchForm(request.GET)
+
+    if form.is_valid():
+      query = form.cleaned_data['query']
+      search_vector = SearchVector('name', weight='A') + \
+                      SearchVector('description', weight='B')
+      search_query = SearchQuery(query)
+
+      # performing stemming search
+      # weighting queries
+      products = Product.objects.annotate(
+        search=search_vector, rank=SearchRank(
+          search_vector, search_query
+        )).filter(rank__gte=0.3).order_by('-rank')
+
   if category_slug:
     requested_category = get_object_or_404(Category, slug=category_slug)
     products = Product.objects.filter(category=requested_category)
+  
+  paginator = Paginator(products, 9)
+  page = request.GET.get('page')
+
+  try:
+    products = paginator.page(page)
+  except PageNotAnInteger:
+    products = paginator.page(1)
+  except EmptyPage:
+    products = paginator.page(paginator.num_pages)
 
   return render(request, 'product/list.html', {
     'categories': categories, 'products': products,
-    'requested_category': requested_category
+    'requested_category': requested_category, 'page': page, 
+    'query': query
   })
 
 

@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'listings.apps.ListingsConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
