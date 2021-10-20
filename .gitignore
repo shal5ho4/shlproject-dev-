@@ -6,6 +6,7 @@ db.sqlite3
 db.sqlite3-journal
 .vscode
 /static
+/staticfiles
 media
 env
 .env

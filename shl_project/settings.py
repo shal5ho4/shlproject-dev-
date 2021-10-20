@@ -124,7 +124,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (str(os.path.join(BASE_DIR, 'static')),)
 
-STATIC_ROOT = str(os.path.join(BASE_DIR, 'staticfiles'))
+STATIC_ROOT = str(os.path.join(BASE_DIR, 'staticfiles/'))
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -136,7 +136,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
-# Cart session config
+# Cart session
 
 CART_ID = 'cart'
 
