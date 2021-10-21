@@ -136,4 +136,47 @@
     {% endif %}
   </div>
 </div>
+{% if recommendation %}
+  <hr>
+  <div class="card shadow-custom border-0 col-lg-10 mx-auto mb-3">
+    <div class="card-body text-center">
+      <h3 class="font-weight-bold text-grey">
+        You may also like...
+      </h3>
+      <div class="bottom_line"></div>
+    </div>
+  </div>
+  <div class="row no-gutters justify-content-center">
+    {% for p in recommendation %}
+      <div class="col-sm-2">
+        <div class="card product h-100">
+          <div class="item">
+            <div class="item-image">
+              <img src="{{ p.image.url }}" alt="" class="img-fluid rounded-0">
+            </div>
+            <div class="item-text">
+              <div class="item-text-wrap">
+                <a href="{{ p.get_absolute_url }}"
+                  class="h2 text-white text-decoration-none">
+                  <i class="fas fa-search-plus"></i>
+                </a>
+              </div>
+            </div>
+            <div class="card-body text-center">
+              {{ p.name }}
+              <hr>
+              <span><i class="fas fa-thin fa-dollar-sign"></i>
+                {{ p.price }}
+              </span>
+              <div>
+                <i class="fas fa-shopping-basket"></i>
+                  {{ p.net }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
 {% endblock %}

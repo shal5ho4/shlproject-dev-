@@ -111,8 +111,12 @@ def profile(request):
     return redirect('profile')
   
   else:
-    user_form = UpdateUserForm(instance=request.user)
-    profile_form = UpdateUserProfileForm(instance=request.user.profile)
+    user_form = UpdateUserForm(instance=request.user) 
+    try:
+      profile_form = UpdateUserProfileForm(instance=request.user.profile)
+    except:
+      Profile.objects.create(user=request.user)
+      profile_form = UpdateUserProfileForm(instance=request.user.profile)
   
   return render(request, 'accounts/profile.html', {
     'user_form': user_form, 'profile_form': profile_form

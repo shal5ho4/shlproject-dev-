@@ -4,6 +4,7 @@ from django.contrib.postgres.search import (
   SearchVector, SearchQuery, SearchRank
 )
 from cart.forms import CartAddProductForm
+from .recommender import Recommender
 from .models import Category, Product, Review
 from .forms import ReviewForm, SearchForm
 
@@ -60,6 +61,9 @@ def product_detail(request, category_slug, product_slug):
   product = get_object_or_404(Product, 
     category_id=category.id, slug=product_slug)
   
+  r = Recommender()
+  recommendation = r.suggest_products_for([product], 3)
+  
   if request.method == 'POST':
     review_form = ReviewForm(request.POST)
 
@@ -83,6 +87,7 @@ def product_detail(request, category_slug, product_slug):
   
   return render(request, 'product/detail.html', {
     'product': product, 'review_form': review_form, 
-    'cart_product_form': cart_product_form
+    'cart_product_form': cart_product_form,
+    'recommendation': recommendation
   })
   

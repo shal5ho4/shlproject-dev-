@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from listings.models import Product
+from listings.recommender import Recommender
 from .forms import CartAddProductForm
 from decimal import Decimal
 
@@ -57,8 +58,12 @@ def cart_detail(request):
   cart_total_price = sum(Decimal(item['price']) * item['quantity']
                       for item in temp_cart.values())
 
+  r = Recommender()
+  recommendation = r.suggest_products_for([p for p in products], 5)
+
   return render(request, 'cart/detail.html', {
-    'cart': temp_cart.values(), 'cart_total_price': cart_total_price
+    'cart': temp_cart.values(), 'cart_total_price': cart_total_price,
+    'recommendation': recommendation
   })
 
 

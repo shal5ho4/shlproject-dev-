@@ -32,7 +32,7 @@
           {% if request.user.is_authenticated %}
             <li class="nav-item">
               <a href="{% url 'profile' %}" class="nav-link text-white">
-                <i class="fas fa-user"></i> {{ request.user.email }}
+                <i class="fas fa-user"></i> Welcome, {{ request.user.first_name }}
               </a>
             </li>
             <li class="nav-item">

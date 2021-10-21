@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
     'django_extensions',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -169,3 +170,27 @@ EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 
 EMAIL_USE_TLS = True
+
+
+# social_auth config
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
+]
+
+SOCIAL_AUTH_TWITTER_KEY = env.str('TWITTER_KEY')
+SOCIAL_AUTH_TWITTER_SECRET = env.str('TWITTER_SECRET')
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env.str('GOOGLE_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env.str('GOOGLE_SECRET')
+
+
+# Redis config
+
+REDIS_HOST = 'localhost'
+
+REDIS_PORT = 6379
+
+REDIS_DB = 1

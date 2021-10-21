@@ -48,4 +48,27 @@
   </form>
 </div>
 
+<div class="card shadow-custom border-0 col-lg-5 mx-auto mb-3">
+  <h3 class="py-2 font-weight-bold text-grey text-center">
+    Register with social account
+  </h3>
+  <a href="{% url 'social:begin' 'twitter' %}" 
+    class="btn btn-block btn-outline-primary mb-3"
+    role="button" aria-pressed="true">
+    <i class="fab fa-twitter"></i> Register with Twitter
+  </a>
+  <a href="{% url 'social:begin' 'google-oauth2' %}"
+    class="btn btn-block btn-outline-success mb-3"
+    role="button" aria-pressed="true">
+    <i class="fab fa-google"></i> Register with Google
+  </a>
+  <hr>
+  <div class="align-self-center">
+    <span class="text-center font-weight-bold text-muted">
+      After successful log-in,<br> 
+      we highly recommend that<br> 
+      you enter your profile information.<br>
+    </span>
+  </div>
+</div>
 {% endblock %}

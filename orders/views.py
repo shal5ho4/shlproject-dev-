@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.shortcuts import render, get_object_or_404
 
+from listings.recommender import Recommender
 from cart.views import get_cart, cart_clear
 from .tasks import order_created
 from .models import OrderItem, Order, Product
@@ -49,6 +50,9 @@ def order_create(request):
       OrderItem.objects.create(order=order, product=product, 
         price=cart_item['price'], quantity=cart_item['quantity']   
       )
+
+    r = Recommender()
+    r.products_bought([product for product in products])
     
     customer = stripe.Customer.create(
       email = cf['email'],

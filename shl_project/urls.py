@@ -8,6 +8,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     #path('.well-known/apple-developer-merchantid-domain-association/', apple_pay),
     path('accounts/', include('accounts.urls')),
+    path('social-auth/', 
+        include('social_django.urls', namespace='social')),
     path('admin/', admin.site.urls),
     path('cart/', include('cart.urls', namespace='cart')),
     path('orders/', include('orders.urls', namespace='orders')),
