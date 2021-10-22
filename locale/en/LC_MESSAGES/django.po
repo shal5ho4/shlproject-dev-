@@ -1,0 +1,581 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-22 08:15+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: accounts/urls.py:9
+msgid "login/"
+msgstr ""
+
+#: accounts/urls.py:10
+msgid "logout/"
+msgstr ""
+
+#: accounts/urls.py:11
+msgid "register/"
+msgstr ""
+
+#: accounts/urls.py:12
+msgid "profile/"
+msgstr ""
+
+#: accounts/urls.py:14
+msgid "password_change/"
+msgstr ""
+
+#: accounts/urls.py:17
+msgid "password_change/done/"
+msgstr ""
+
+#: accounts/urls.py:20
+msgid "password_reset/"
+msgstr ""
+
+#: accounts/urls.py:23
+msgid "password_reset/done/"
+msgstr ""
+
+#: accounts/urls.py:30
+msgid "password_reset/complete/"
+msgstr ""
+
+#: accounts/views.py:37
+msgid "Incorrect email / password"
+msgstr ""
+
+#: accounts/views.py:61 accounts/views.py:110
+msgid "User with given email already exists"
+msgstr ""
+
+#: accounts/views.py:107
+msgid "Profile was updated successfully"
+msgstr ""
+
+#: listings/urls.py:11
+msgid "favorite/"
+msgstr ""
+
+#: orders/models.py:9 templates/order/detail.html:16
+msgid "Created"
+msgstr ""
+
+#: orders/models.py:10
+msgid "Processing"
+msgstr ""
+
+#: orders/models.py:11
+msgid "Shipped"
+msgstr ""
+
+#: orders/models.py:12
+msgid "Ready for pickup"
+msgstr ""
+
+#: orders/models.py:13
+msgid "Delivered"
+msgstr ""
+
+#: orders/models.py:17 templates/order/create.html:86
+msgid "Courier delivery"
+msgstr ""
+
+#: orders/models.py:18 templates/order/create.html:95
+msgid "Recipient pickup"
+msgstr ""
+
+#: orders/urls.py:11
+msgid "create/"
+msgstr ""
+
+#: shl_project/settings.py:125
+msgid "English"
+msgstr ""
+
+#: shl_project/settings.py:126
+msgid "Spanish"
+msgstr ""
+
+#: shl_project/urls.py:12
+msgid "accounts/"
+msgstr ""
+
+#: shl_project/urls.py:15
+msgid "admin/"
+msgstr ""
+
+#: shl_project/urls.py:16
+msgid "cart/"
+msgstr ""
+
+#: shl_project/urls.py:17
+msgid "orders/"
+msgstr ""
+
+#: templates/accounts/login.html:4 templates/accounts/login.html:19
+#: templates/accounts/login.html:31 templates/base.html:47
+#: templates/order/create.html:72
+msgid "Log in"
+msgstr ""
+
+#: templates/accounts/login.html:24 templates/accounts/profile.html:41
+#: templates/accounts/register.html:35 templates/order/create.html:30
+#: templates/registration/password_reset_form.html:17
+msgid "Email"
+msgstr ""
+
+#: templates/accounts/login.html:28 templates/accounts/register.html:39
+msgid "Password"
+msgstr ""
+
+#: templates/accounts/login.html:37
+#: templates/registration/password_reset_form.html:9
+msgid "Forgot your password?"
+msgstr ""
+
+#: templates/accounts/profile.html:4
+msgid "Account"
+msgstr ""
+
+#: templates/accounts/profile.html:22
+msgid "Profile"
+msgstr ""
+
+#: templates/accounts/profile.html:29 templates/accounts/register.html:27
+#: templates/order/create.html:18
+msgid "First name"
+msgstr ""
+
+#: templates/accounts/profile.html:35 templates/accounts/register.html:31
+#: templates/order/create.html:24
+msgid "Last name"
+msgstr ""
+
+#: templates/accounts/profile.html:47 templates/order/create.html:36
+msgid "Phone number"
+msgstr ""
+
+#: templates/accounts/profile.html:56 templates/order/create.html:45
+msgid "Address"
+msgstr ""
+
+#: templates/accounts/profile.html:62 templates/order/create.html:51
+msgid "Postal code"
+msgstr ""
+
+#: templates/accounts/profile.html:68 templates/order/create.html:57
+msgid "City"
+msgstr ""
+
+#: templates/accounts/profile.html:74 templates/order/create.html:63
+msgid "Country"
+msgstr ""
+
+#: templates/accounts/profile.html:84
+msgid "Update profile"
+msgstr ""
+
+#: templates/accounts/profile.html:88
+#: templates/registration/password_change_form.html:4
+#: templates/registration/password_change_form.html:19
+#: templates/registration/password_change_form.html:39
+msgid "Change password"
+msgstr ""
+
+#: templates/accounts/profile.html:93
+msgid "Your orders"
+msgstr ""
+
+#: templates/accounts/profile.html:111
+msgid "Invoice"
+msgstr ""
+
+#: templates/accounts/profile.html:118
+msgid "No orders yet."
+msgstr ""
+
+#: templates/accounts/register.html:4 templates/accounts/register.html:20
+#: templates/accounts/register.html:47 templates/base.html:52
+msgid "Register"
+msgstr ""
+
+#: templates/accounts/register.html:43
+msgid "Repeat password"
+msgstr ""
+
+#: templates/accounts/register.html:54
+msgid "Register with social account"
+msgstr ""
+
+#: templates/accounts/register.html:59
+msgid "Register with Twitter"
+msgstr ""
+
+#: templates/accounts/register.html:64
+msgid "Register with Google"
+msgstr ""
+
+#: templates/accounts/register.html:69
+msgid "After successful log-in"
+msgstr ""
+
+#: templates/accounts/register.html:70
+msgid "we highly recommend that"
+msgstr ""
+
+#: templates/accounts/register.html:71
+msgid "you enter your profile information"
+msgstr ""
+
+#: templates/accounts/register_done.html:4
+msgid "Registration Complete"
+msgstr ""
+
+#: templates/accounts/register_done.html:9
+msgid "Welcome"
+msgstr ""
+
+#: templates/accounts/register_done.html:13
+msgid "Your account was successfully created."
+msgstr ""
+
+#: templates/accounts/register_done.html:14
+msgid "You can"
+msgstr ""
+
+#: templates/accounts/register_done.html:14
+#: templates/registration/password_reset_complete.html:16
+msgid "log in"
+msgstr ""
+
+#: templates/accounts/register_done.html:14
+msgid "now"
+msgstr ""
+
+#: templates/base.html:36
+msgid "Welcome,"
+msgstr ""
+
+#: templates/base.html:41
+msgid "Log out"
+msgstr ""
+
+#: templates/cart/detail.html:4
+msgid "Shopping cart"
+msgstr ""
+
+#: templates/cart/detail.html:9 templates/order/detail.html:38
+msgid "Your order"
+msgstr ""
+
+#: templates/cart/detail.html:14 templates/order/detail.html:42
+msgid "Product"
+msgstr ""
+
+#: templates/cart/detail.html:17
+msgid "Description"
+msgstr ""
+
+#: templates/cart/detail.html:20
+msgid "Availability"
+msgstr ""
+
+#: templates/cart/detail.html:23 templates/order/detail.html:43
+msgid "Price"
+msgstr ""
+
+#: templates/cart/detail.html:26 templates/order/detail.html:44
+msgid "Quantity"
+msgstr ""
+
+#: templates/cart/detail.html:29
+msgid "Total Price"
+msgstr ""
+
+#: templates/cart/detail.html:49 templates/product/detail.html:43
+msgid "Available"
+msgstr ""
+
+#: templates/cart/detail.html:53 templates/product/detail.html:47
+msgid "Currently unavailable"
+msgstr ""
+
+#: templates/cart/detail.html:94
+msgid "Your shopping cart is empty."
+msgstr ""
+
+#: templates/cart/detail.html:102
+msgid "Total price"
+msgstr ""
+
+#: templates/cart/detail.html:120 templates/cart/detail.html:133
+#: templates/order/create.html:125
+msgid "Back to shop"
+msgstr ""
+
+#: templates/cart/detail.html:124 templates/order/create.html:3
+msgid "Checkout"
+msgstr ""
+
+#: templates/cart/detail.html:145 templates/product/detail.html:131
+msgid "You may also like..."
+msgstr ""
+
+#: templates/order/create.html:8
+msgid "Delivery information"
+msgstr ""
+
+#: templates/order/create.html:70
+msgid "Already registered?"
+msgstr ""
+
+#: templates/order/create.html:78 templates/order/detail.html:67
+msgid "Transport"
+msgstr ""
+
+#: templates/order/create.html:97
+msgid "free"
+msgstr ""
+
+#: templates/order/create.html:103
+msgid "Payment"
+msgstr ""
+
+#: templates/order/create.html:111
+msgid "Note"
+msgstr ""
+
+#: templates/order/create.html:114 templates/order/detail.html:45
+msgid "Price total"
+msgstr ""
+
+#: templates/order/create.html:128
+msgid "Create order"
+msgstr ""
+
+#: templates/order/created.html:4 templates/order/detail.html:3
+#: templates/order/detail.html:12
+msgid "Order"
+msgstr ""
+
+#: templates/order/created.html:4
+msgid "created"
+msgstr ""
+
+#: templates/order/created.html:9
+msgid "Thank you for your order."
+msgstr ""
+
+#: templates/order/created.html:10
+msgid "Your order number is"
+msgstr ""
+
+#: templates/order/created.html:14
+msgid ""
+"\n"
+"        We value your order and we hope your taste buds\n"
+"        will enjoy our products. In case of any\n"
+"        questions, do not hesitate to contact us!\n"
+"      "
+msgstr ""
+
+#: templates/order/detail.html:22
+msgid "Manufacturer"
+msgstr ""
+
+#: templates/order/detail.html:24
+msgid "E-mail"
+msgstr ""
+
+#: templates/order/detail.html:25
+msgid "Internet"
+msgstr ""
+
+#: templates/order/detail.html:26
+msgid "Telephone"
+msgstr ""
+
+#: templates/order/detail.html:30
+msgid "Customer"
+msgstr ""
+
+#: templates/product/detail.html:20
+msgid "Hotness"
+msgstr ""
+
+#: templates/product/detail.html:54
+msgid "user"
+msgstr ""
+
+#: templates/product/detail.html:55
+msgid "liked this product"
+msgstr ""
+
+#: templates/product/detail.html:62
+msgid "Add to favorite"
+msgstr ""
+
+#: templates/product/detail.html:64
+msgid "Remove from favorite"
+msgstr ""
+
+#: templates/product/detail.html:72
+msgid "Average rating"
+msgstr ""
+
+#: templates/product/detail.html:77
+msgid "Write review"
+msgstr ""
+
+#: templates/product/detail.html:113
+msgid "Reviews"
+msgstr ""
+
+#: templates/product/detail.html:123
+msgid "Currently no reviews"
+msgstr ""
+
+#: templates/product/detail.html:175
+msgid "Write your review"
+msgstr ""
+
+#: templates/product/detail.html:183
+msgid "Rating"
+msgstr ""
+
+#: templates/product/list.html:11
+msgid "Categories"
+msgstr ""
+
+#: templates/product/list.html:20
+msgid "All"
+msgstr ""
+
+#: templates/product/list.html:47
+msgid "Search results"
+msgstr ""
+
+#: templates/product/list.html:49
+msgid "Our Products"
+msgstr ""
+
+#: templates/product/list.html:89
+msgid "Sorry, no results found."
+msgstr ""
+
+#: templates/product/list.html:101
+msgid "Back"
+msgstr ""
+
+#: templates/product/list.html:104
+msgid "Page"
+msgstr ""
+
+#: templates/product/list.html:104
+msgid "of"
+msgstr ""
+
+#: templates/product/list.html:108
+msgid "Next"
+msgstr ""
+
+#: templates/product/search_bar.html:10
+msgid "Search"
+msgstr ""
+
+#: templates/registration/password_change_form.html:10
+msgid ""
+"  \n"
+"      Could not update password.\n"
+"      Make sure you provide valid credentials and try again.\n"
+"    "
+msgstr ""
+
+#: templates/registration/password_change_form.html:24
+msgid "Old password"
+msgstr ""
+
+#: templates/registration/password_change_form.html:29
+#: templates/registration/password_reset_confirm.html:26
+msgid "New password"
+msgstr ""
+
+#: templates/registration/password_change_form.html:34
+#: templates/registration/password_reset_confirm.html:38
+msgid "Confirm password"
+msgstr ""
+
+#: templates/registration/password_reset_complete.html:4
+#: templates/registration/password_reset_complete.html:10
+msgid "Password changed"
+msgstr ""
+
+#: templates/registration/password_reset_complete.html:14
+msgid "Your password was successfully changed. You can"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:4
+#: templates/registration/password_reset_confirm.html:19
+#: templates/registration/password_reset_form.html:4
+msgid "Reset password"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:10
+msgid ""
+"\n"
+"      Could not update password.\n"
+"      Make sure provided passwords match and try again.\n"
+"    "
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:22
+msgid "Fill in new password"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Confirm new password"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:43
+msgid "Provided link is invalid."
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:44
+msgid "Please request new password reset."
+msgstr ""
+
+#: templates/registration/password_reset_done.html:4
+#: templates/registration/password_reset_done.html:9
+msgid "Password reset"
+msgstr ""
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"\n"
+"      We have sent you instructions for resetting your password.\n"
+"      In case you haven’t received any email,\n"
+"      please make sure you provided correct email address.\n"
+"    "
+msgstr ""
+
+#: templates/registration/password_reset_form.html:12
+msgid "Your email address for sending password reset instructions"
+msgstr ""
+
+#: templates/registration/password_reset_form.html:22
+msgid "Send email"
+msgstr ""

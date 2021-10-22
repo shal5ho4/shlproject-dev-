@@ -1,3 +1,4 @@
+{% load i18n %}
 <form method="GET" action="">
   <div class="input-field">
     <label class="text-muted">
@@ -6,6 +7,6 @@
     {{ form.query }}
   </div>
   <button class="btn btn-dark btn-block" type="submit">
-    Search
+    {% trans 'Search' %}
   </button>
 </form>

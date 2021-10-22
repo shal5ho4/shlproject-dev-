@@ -1,31 +1,32 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Shopping cart{% endblock %}
+{% block title %}{% trans 'Shopping cart' %}{% endblock %}
 
 {% block content %}
 <div class="card shadow-custom border-0 col-lg-10 mx-auto mb-3">
   <h3 class="py-2 font-weight-bold text-grey text-center">
-    Your order:
+    {% trans 'Your order' %}:
   </h3>
 
   <div class="row justify-content-center py-2 text-center header-desc">
     <div class="col-lg-2 align-self-center">
-      Product
+      {% trans 'Product' %}
     </div>
     <div class="col-lg-2 align-self-center">
-      Description
+      {% trans 'Description' %}
     </div>
     <div class="col-lg-2 align-self-center">
-      Availability
+      {% trans 'Availability' %}
     </div>
     <div class="col-lg-1 align-self-center">
-      Price
+      {% trans 'Price' %}
     </div>
     <div class="col-lg-2 align-self-center">
-      Quantity
+      {% trans 'Quantity' %}
     </div>
     <div class="col-lg-3 align-self-center">
-      Total Price
+      {% trans 'Total Price' %}
     </div>
   </div>
   <hr class="mt-0">
@@ -38,18 +39,18 @@
               class="img-fluid rounded-0">
           </a>
         </div>
-        <div class="cart-item product-name col-12 col-lg-2 align-self-center">
+        <div class="cart-item product-name col-12 col-lg-2 
+          align-self-center text-center">
           {{ product.name }}
         </div>
-        <div class="cart-item col-12 col-sm-3 col-lg-1
-          align-self-center text-center">
+        <div class="cart-item col-12 col-lg-2 align-self-center">
           {% if product.available %}
             <div class="text-green mb-0 text-center">
-              Available
+              {% trans 'Available' %}
             </div>
           {% else %}
             <div class="text-danger mb-0 text-center">
-              Currently unavailable
+              {% trans 'Currently unavailable' %}
             </div>
           {% endif %}
         </div>
@@ -61,7 +62,7 @@
           <form action="{% url 'cart:cart_add' product.id %}" method="POST">
             {% csrf_token %}
             <span class="input-group shopping-cart">
-              {{ item.update_quantity_form }}
+              {{ item.update_quantity_form.quantity }}
               <input type="hidden" name="override_qty" value="True">
               <div class="input-group-append">
                 <button type="submit" class="btn text-white"
@@ -90,7 +91,7 @@
   {% empty %}
     <div class="align-self-center">
       <span class="text-center font-weight-bold text-muted lead">
-        Your shopping cart is empty.
+        {% trans 'Your shopping cart is empty.' %}
       </span>
     </div>
   {% endfor %}
@@ -98,7 +99,7 @@
   <div class="total-price-cart">
     <h4 class="row justify-content-center">
       <div class="col-5 col-lg-9 text-right text-grey">
-        Total price:
+        {% trans 'Total price' %}:
       </div>
       <div class="col-5 col-lg-2 text-right text-danger">
         ${{ cart_total_price|floatformat:2 }}
@@ -116,11 +117,11 @@
         <div class="btn-group d-flex">
           <a href="{% url 'listings:product_list' %}"
             class="btn btn-warning shadow-custom col">
-            Back to shop
+            {% trans 'Back to shop' %}
           </a>
           <a href="{% url 'orders:order_create' %}" 
             class="btn btn-danger shadow-custom col">
-            Checkout
+            {% trans 'Checkout' %}
           </a>
         </div>
       </div>
@@ -129,7 +130,7 @@
         <div class="btn-group d-flex">
           <a href="{% url 'listings:product_list' %}"
             class="btn btn-warning shadow-custom col">
-            Back to shop
+            {% trans 'Back to shop' %}
           </a>
         </div>
       </div>
@@ -141,7 +142,7 @@
   <div class="card shadow-custom border-0 col-lg-10 mx-auto mb-3">
     <div class="card-body text-center">
       <h3 class="font-weight-bold text-grey">
-        You may also like...
+        {% trans 'You may also like...' %}
       </h3>
       <div class="bottom_line"></div>
     </div>

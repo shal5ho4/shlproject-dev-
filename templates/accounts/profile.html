@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Account{% endblock %}
+{% block title %}{% trans 'Account' %}{% endblock %}
 
 {% block content %}
 {% if messages %}
@@ -18,32 +19,32 @@
   {% endfor %}
 {% endif %}
   <div class="card shadow-custom border-0 col-lg-7 mx-auto mb-3">
-    <h2 class="font-weight-bold text-grey mt-2">Profile</h2>
+    <h2 class="font-weight-bold text-grey mt-2">{% trans 'Profile' %}</h2>
     <form action="" method="POST">
       {% csrf_token %}
       <div class="row">
         <div class="col-md-6">
           <div class="input-field">
             {{ user_form.first_name }}
-            <label for="first_name">First name</label>
+            <label for="first_name">{% trans 'First name' %}</label>
           </div>
         </div>
         <div class="col-md-6">
           <div class="input-field">
             {{ user_form.last_name }}
-            <label for="last_name">Last name</label>
+            <label for="last_name">{% trans 'Last name' %}</label>
           </div>
         </div>
         <div class="col-md-6">
           <div class="input-field">
             {{ user_form.email }}
-            <label for="email">Email</label>
+            <label for="email">{% trans 'Email' %}</label>
           </div>
         </div>
         <div class="col-md-6">
           <div class="input-field">
             {{ profile_form.phone_number }}
-            <label for="phone_number">Phone number</label>
+            <label for="phone_number">{% trans 'Phone number' %}</label>
           </div>
         </div>
       </div>
@@ -52,25 +53,25 @@
         <div class="col-md-6">
           <div class="input-field">
             {{ profile_form.address }}
-            <label for="address">Address</label>
+            <label for="address">{% trans 'Address' %}</label>
           </div>
         </div>
         <div class="col-md-6">
           <div class="input-field">
             {{ profile_form.postal_code }}
-            <label for="postal_code">Postal code</label>
+            <label for="postal_code">{% trans 'Postal code' %}</label>
           </div>
         </div>
         <div class="col-md-6">
           <div class="input-field">
             {{ profile_form.city }}
-            <label for="city">City</label>
+            <label for="city">{% trans 'City' %}</label>
           </div>
         </div>
         <div class="col-md-6">
           <div class="input-field">
             {{ profile_form.country }}
-            <label for="country">Country</label>
+            <label for="country">{% trans 'Country' %}</label>
           </div>
         </div>
       </div>
@@ -80,16 +81,16 @@
           <button type="submit" class="btn btn-dark" data-toggle="tooltip" 
             data-placement="top"
             title="Fill in new details and click 'Update profile'">
-            Update profile</button>
+            {% trans 'Update profile' %}</button>
         </div>
         <div class="col-md-6 text-center">
           <a class="btn btn-warning" href="{% url 'password_change' %}">
-            Change password
+            {% trans 'Change password' %}
           </a>
         </div>
       </div>
       <hr>
-      <h3 class="mb-3">Your orders:</h3>
+      <h3 class="mb-3">{% trans 'Your orders' %}:</h3>
       <table class="table">
         {% for order in request.user.orders.all %}
           <tr>
@@ -107,14 +108,14 @@
               <a href="{% url 'orders:customer_invoice_pdf' order.id %}" 
                 class="text-decoration-none" target="_blank">
                 <i class="far fa-file-pdf text-danger"></i>
-                Invoice {{ order.id }}
+                {% trans 'Invoice' %} {{ order.id }}
               </a>
             </td>
             <td>{{ order.status }}</td>
           </tr>
         {% empty %}
           <tr>
-            No orders yet.
+            {% trans 'No orders yet.' %}
           </tr>
         {% endfor %}
       </table>

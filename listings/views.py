@@ -1,5 +1,8 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 from django.contrib.postgres.search import (
   SearchVector, SearchQuery, SearchRank
 )
@@ -11,12 +14,24 @@ from .forms import ReviewForm, SearchForm
 
 def product_list(request, category_slug=None):
 
+  language = request.LANGUAGE_CODE
+
   categories = Category.objects.all()
   requested_category = None
   products = Product.objects.all()
 
   form = SearchForm()
   query = None
+
+  paginator = Paginator(products, 9)
+  page = request.GET.get('page')
+
+  try:
+    products = paginator.page(page)
+  except PageNotAnInteger:
+    products = paginator.page(1)
+  except EmptyPage:
+    products = paginator.page(paginator.num_pages)
 
   if 'query' in request.GET:
     form = SearchForm(request.GET)
@@ -35,18 +50,10 @@ def product_list(request, category_slug=None):
         )).filter(rank__gte=0.3).order_by('-rank')
 
   if category_slug:
-    requested_category = get_object_or_404(Category, slug=category_slug)
+    requested_category = get_object_or_404(Category,
+      translations__language_code=language, 
+      translations__slug=category_slug)
     products = Product.objects.filter(category=requested_category)
-  
-  paginator = Paginator(products, 9)
-  page = request.GET.get('page')
-
-  try:
-    products = paginator.page(page)
-  except PageNotAnInteger:
-    products = paginator.page(1)
-  except EmptyPage:
-    products = paginator.page(paginator.num_pages)
 
   return render(request, 'product/list.html', {
     'categories': categories, 'products': products,
@@ -57,7 +64,11 @@ def product_list(request, category_slug=None):
 
 def product_detail(request, category_slug, product_slug):
 
-  category = get_object_or_404(Category, slug=category_slug)
+  language = request.LANGUAGE_CODE
+
+  category = get_object_or_404(Category, 
+    translations__language_code=language,
+    translations__slug=category_slug)
   product = get_object_or_404(Product, 
     category_id=category.id, slug=product_slug)
   
@@ -91,3 +102,25 @@ def product_detail(request, category_slug, product_slug):
     'recommendation': recommendation
   })
   
+
+@login_required
+@require_POST
+def product_fav(request):
+  
+  product_id = request.POST.get('id')
+  action = request.POST.get('action')
+
+  if product_id and action:
+    try:
+      product = Product.objects.get(id=product_id)
+      if action == 'like':
+        product.users_fav.add(request.user)
+      else:
+        product.users_fav.remove(request.user)
+      
+      return JsonResponse({'status':'ok'})
+    
+    except:
+      pass
+  
+  return JsonResponse({'status':'error'})

@@ -1,20 +1,21 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 from listings.models import Product
 
 
 ORDER_STATUS = [
-  ('Created', 'Created'),
-  ('Processing', 'Processing'),
-  ('Shipped', 'Shipped'),
-  ('Ready for pickup', 'Ready for pickup'),
-  ('Delivered', 'Delivered')
+  ('Created', _('Created')),
+  ('Processing', _('Processing')),
+  ('Shipped', _('Shipped')),
+  ('Ready for pickup', _('Ready for pickup')),
+  ('Delivered', _('Delivered'))
 ]
 
 TRANSPORT_CHOICES = [
-  ('Courier delivery', 'Courier delivery'),
-  ('Recipient pickup', 'Recipient pickup')
+  ('Courier delivery', _('Courier delivery')),
+  ('Recipient pickup', _('Recipient pickup'))
 ]
 
 

@@ -59,7 +59,10 @@ def cart_detail(request):
                       for item in temp_cart.values())
 
   r = Recommender()
-  recommendation = r.suggest_products_for([p for p in products], 5)
+  recommendation = None
+  
+  if len(products) > 0:
+    recommendation = r.suggest_products_for([p for p in products], 5)
 
   return render(request, 'cart/detail.html', {
     'cart': temp_cart.values(), 'cart_total_price': cart_total_price,

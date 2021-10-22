@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Log in{% endblock %}
+{% block title %}{% trans 'Log in' %}{% endblock %}
 
 {% block content %}
 
@@ -15,25 +16,25 @@
 {% endif %}
 
 <div class="card shadow-custom border-0 col-lg-4 mx-auto mb-3">
-  <h3 class="py-2 font-weight-bold text-grey text-center">Log in</h3>
+  <h3 class="py-2 font-weight-bold text-grey text-center">{% trans 'Log in' %}</h3>
   <form action="" method="POST">
     {% csrf_token %}
     <div class="input-field">
       {{ form.email }}
-      <label for="email">Email</label>
+      <label for="email">{% trans 'Email' %}</label>
     </div>
     <div class="input-field">
       {{ form.password }}
-      <label for="password">Password</label>
+      <label for="password">{% trans 'Password' %}</label>
     </div>
     <button class="btn btn-block btn-warning mb-3" type="submit">
-      Log in
+      {% trans 'Log in' %}
     </button>
   </form>
   <div class="text-center mb-2">
     <a href="{% url 'password_reset' %}"
       class="text-decoration-none">
-      Forgot your password?
+      {% trans 'Forgot your password?' %}
     </a>
   </div>
 </div>

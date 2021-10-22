@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.utils.translation import gettext_lazy as _
 from .models import Profile
 from .forms import (
   LoginForm, UserRegistarionForm, UpdateUserForm, UpdateUserProfileForm
@@ -33,7 +34,7 @@ def user_login(request):
 
           return redirect('listings:product_list')
       
-      messages.error(request, 'Incorrect email / password')
+      messages.error(request, _('Incorrect email / password'))
   
   else:
     form = LoginForm()
@@ -57,7 +58,7 @@ def register(request):
         
         if User.objects.filter(email=email).exists():
           messages.error(request,
-            'User with given email already exists')
+            _('User with given email already exists'))
             
           return render(request, 'accounts/register.html', {'user_form': user_form})
         
@@ -103,10 +104,10 @@ def profile(request):
         user_form.save()
         profile_form.save()
 
-        messages.success(request, 'Profile was updated successfully')
+        messages.success(request, _('Profile was updated successfully'))
     
     else:
-      messages.error(request, 'User with given email already exists')
+      messages.error(request, _('User with given email already exists'))
     
     return redirect('profile')
   

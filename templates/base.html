@@ -1,6 +1,7 @@
+{% load i18n %}  
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="UTF-8">
@@ -19,10 +20,18 @@
 <body>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top py-3"
     id="main-nav">
+    {% get_current_language as LANGUAGE_CODE %}
+    {% get_available_languages as LANGUAGES %}
+    {% get_language_info_list for LANGUAGES as languages %}
     <div class="container">
       <a href="{% url 'listings:product_list' %}" class="navbar-brand">
         <h3 class="font-weight-bold">SHL.depot</h3>
       </a>
+      {% for language in languages %}
+        <a href="/{{ language.code }}/" class="nav-link text-white">
+          {{ language.name_local }} 
+        </a>
+      {% endfor %}
       <button class="navbar-toggler" data-toggle="collapse"
         data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span> 
@@ -32,23 +41,23 @@
           {% if request.user.is_authenticated %}
             <li class="nav-item">
               <a href="{% url 'profile' %}" class="nav-link text-white">
-                <i class="fas fa-user"></i> Welcome, {{ request.user.first_name }}
+                <i class="fas fa-user"></i> {% trans 'Welcome,' %} {{ request.user.first_name }}
               </a>
             </li>
             <li class="nav-item">
               <a href="{% url 'logout' %}" class="nav-link text-white">
-                <i class="fas fa-sign-out-alt"></i> Log out
+                <i class="fas fa-sign-out-alt"></i> {% trans 'Log out' %}
               </a>
             </li>
           {% else %}
             <li class="nav-item">
               <a href="{% url 'login' %}" class="nav-link text-white">
-                <i class="fas fa-sign-in-alt"></i> Log in
+                <i class="fas fa-sign-in-alt"></i> {% trans 'Log in' %}
               </a>
             </li>
             <li class="nav-item">
               <a href="{% url 'register' %}" class="nav-link text-white">
-                <i class="fas fa-user-plus"></i> Register
+                <i class="fas fa-user-plus"></i> {% trans 'Register' %}
               </a>
             </li>
           {% endif %}
@@ -81,6 +90,26 @@
     crossorigin="anonymous"></script>
   <script src="{% static 'js/script.js' %}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    var csrftoken = Cookies.get('csrftoken');
+    function csrfSafeMethod(method) {
+      // these HTTP methods do not require CSRF protection
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+      beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+      }
+    });
+
+    $(document).ready(function(){
+      {% block domready %}
+      {% endblock %}
+    });
+  </script>
 
 </body>
 </html>

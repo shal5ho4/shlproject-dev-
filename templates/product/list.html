@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load listings_tags %}
+{% load i18n %}
 
 {% block title %}SHL.depot{% endblock %}
 
@@ -7,7 +8,7 @@
 <div class="row justify-content-center">
   <div class="col-lg-3">
     <div class="card shadow-custom border-0">
-      <h4 class="p-3 font-weight-bold text-grey">Categories</h4>
+      <h4 class="p-3 font-weight-bold text-grey">{% trans 'Categories' %}</h4>
       <ul class="list-group border-0 categories_list">
         <li 
           {% if not requested_category %}
@@ -16,7 +17,7 @@
             class="list-group-item border-0 p-0 unselected"
           {% endif %}>
             <a href="{% url 'listings:product_list' %}" 
-              class="btn btn-block text-left">All</a>
+              class="btn btn-block text-left">{% trans 'All' %}</a>
         </li>
         {% for category in categories %}
           <li 
@@ -43,9 +44,9 @@
           {% if requested_category %}
             {{ requested_category.name }}
           {% elif query %}
-            Search results
+            {% trans 'Search results' %}
           {% else %}
-            Our Products
+            {% trans 'Our Products' %}
           {% endif %}
         </h2>
         <div class="bottom_line"></div>
@@ -85,7 +86,7 @@
       {% empty %}
         <div class="col-sm-12">
           <div class="h4 text-decoration-none text-center">
-            Sorry, no results found.
+            {% trans 'Sorry, no results found.' %}
           </div>
         </div>
       {% endfor %}
@@ -97,14 +98,14 @@
       <i class="fas fa-caret-square-left"></i>
       {% if products.has_previous %}
         <a href="?page={{ products.previous_page_number }}"
-          class="text-warning">Back</a>
+          class="text-warning">{% trans 'Back' %}</a>
       {% endif %}
       <span class="current">
-        Page {{ products.number }} of {{ products.paginator.num_pages }}
+        {% trans 'Page' %} {{ products.number }} {% trans 'of' %} {{ products.paginator.num_pages }}
       </span>
       {% if products.has_next %}
         <a href="?page={{ products.next_page_number }}" 
-          class="text-warning">Next</a>
+          class="text-warning">{% trans 'Next' %}</a>
       {% endif %}
       <i class="fas fa-caret-square-right"></i>
     </span>

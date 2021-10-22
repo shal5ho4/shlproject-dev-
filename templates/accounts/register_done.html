@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Registration Complete{% endblock %}
+{% block title %}{% trans 'Registration Complete' %}{% endblock %}
 
 {% block content %}
 <div class="card shadow-custom border-0 col-lg-5 mx-auto mb-3 text-center">
   <h3 class="py-2 font-weight-bold text-grey">
-    Welcome, {{ new_user.first_name }}!
+    {% trans 'Welcome' %}, {{ new_user.first_name }}!
   </h3>
   <hr class="my-0">
   <div class="py-2">
-    Your account was successfully created.
-    You can <a href="{% url 'login' %}">log in</a> now.
+    {% trans 'Your account was successfully created.' %}
+    {% trans 'You can' %} <a href="{% url 'login' %}">{% trans 'log in' %}</a> {% trans 'now' %}.
   </div>
 </div>
 {% endblock %}

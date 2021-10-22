@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Register{% endblock %}
+{% block title %}{% trans 'Register' %}{% endblock %}
 
 {% block content %}
 
@@ -16,58 +17,58 @@
 
 <div class="card shadow-custom border-0 col-lg-5 mx-auto mb-3">
   <h3 class="py-2 font-weight-bold text-grey text-center">
-    Register
+    {% trans 'Register' %}
   </h3>
   <form action="" method="POST">
     {% csrf_token %}
     <div class="form-group">
       <div class="input-field">
         {{ user_form.first_name }}
-        <label for="first_name">First name</label>
+        <label for="first_name">{% trans 'First name' %}</label>
       </div>
       <div class="input-field">
         {{ user_form.last_name }}
-        <label for="last_name">Last name</label>
+        <label for="last_name">{% trans 'Last name' %}</label>
       </div>
       <div class="input-field">
         {{ user_form.email }}
-        <label for="email">Email</label>
+        <label for="email">{% trans 'Email' %}</label>
       </div>
       <div class="input-field">
         {{ user_form.password }}
-        <label for="password">Password</label>
+        <label for="password">{% trans 'Password' %}</label>
       </div>
       <div class="input-field">
         {{ user_form.password2 }}
-        <label for="password2">Repeat password</label>
+        <label for="password2">{% trans 'Repeat password' %}</label>
       </div>
     </div>
     <button class="btn btn-block btn-warning mb-3" type="submit">
-      Register
+      {% trans 'Register' %}
     </button>
   </form>
 </div>
 
 <div class="card shadow-custom border-0 col-lg-5 mx-auto mb-3">
   <h3 class="py-2 font-weight-bold text-grey text-center">
-    Register with social account
+    {% trans 'Register with social account' %}
   </h3>
   <a href="{% url 'social:begin' 'twitter' %}" 
     class="btn btn-block btn-outline-primary mb-3"
     role="button" aria-pressed="true">
-    <i class="fab fa-twitter"></i> Register with Twitter
+    <i class="fab fa-twitter"></i> {% trans 'Register with Twitter' %}
   </a>
   <a href="{% url 'social:begin' 'google-oauth2' %}"
     class="btn btn-block btn-outline-success mb-3"
     role="button" aria-pressed="true">
-    <i class="fab fa-google"></i> Register with Google
+    <i class="fab fa-google"></i> {% trans 'Register with Google' %}
   </a>
   <hr>
   <div class="align-self-center">
     <span class="text-center font-weight-bold text-muted">
-      After successful log-in,<br> 
-      we highly recommend that<br> 
-      you enter your profile information.<br>
+      {% trans 'After successful log-in' %},<br> 
+      {% trans 'we highly recommend that' %}<br> 
+      {% trans 'you enter your profile information' %}.<br>
     </span>
   </div>
 </div>
